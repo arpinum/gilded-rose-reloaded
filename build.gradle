@@ -1,4 +1,16 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath "io.ratpack:ratpack-gradle:1.4.4"
+    }
+}
 apply plugin: 'java'
+apply plugin: "io.ratpack.ratpack-java"
+
+
+mainClassName = 'Main'
 
 repositories {
     jcenter()
