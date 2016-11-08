@@ -1,9 +1,7 @@
-import auberge.metier.Item;
-import auberge.requete.*;
+import auberge.requete.RequeteListeItems;
 import ratpack.handling.*;
 
-import java.util.List;
-import java.util.stream.Collectors;
+import static ratpack.jackson.Jackson.*;
 
 class ItemsRessource implements Handler {
 
@@ -15,12 +13,12 @@ class ItemsRessource implements Handler {
     }
 
     private void get(Context ctx) {
-        RequeteListeItems requeteListeItems = ctx.get(RequeteListeItems.class);
-        List<Item> execute = requeteListeItems.execute();
-        String collect = execute.stream()
-                .map(Item::getName)
-                .collect(Collectors.joining());
-        ctx.render(collect);
+        RequeteListeItems requeteListeItems = requeteur(ctx);
+        ctx.render(json(requeteListeItems.execute()));
+    }
+
+    private RequeteListeItems requeteur(Context ctx) {
+        return ctx.get(RequeteListeItems.class);
     }
 
 }
