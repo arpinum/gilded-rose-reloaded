@@ -1,8 +1,8 @@
+import auberge.commande.CommandeUpdateQuality;
 import auberge.infrastructure.datastore.memory.MemoireDataStore;
 import auberge.metier.Item;
 import auberge.requete.RequeteListeItems;
-import auberge.web.resource.ItemsRessource;
-import ratpack.registry.Registry;
+import auberge.web.resource.*;
 import ratpack.server.*;
 
 public class Main {
@@ -11,9 +11,13 @@ public class Main {
         MemoireDataStore memoireDataStore = initializeGraine();
         RatpackServer.of(spec -> {
             spec.serverConfig(ServerConfig.embedded().port(8000));
-            spec.registry(Registry.single(new RequeteListeItems(memoireDataStore)));
+            spec.registryOf(registry-> {
+                registry.add(new RequeteListeItems(memoireDataStore));
+                registry.add(new CommandeUpdateQuality(memoireDataStore));
+            });
             spec.handlers(chain -> {
                 chain.path("items", new ItemsRessource());
+                chain.path("batch/updatequality", new BatchMajQualiteRessource());
             });
         }).start();
     }
