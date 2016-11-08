@@ -7,3 +7,10 @@ Le tavernier nous a demandé une version magique web. Issue des dernières reche
 
 On va faire du DDD CQRS les enfants. Ptet même qu'on fera en sorte que c'est reactif. 
 
+## TODO
+
+* Aller chercher le métier
+* Fabriquer un cas d'utilisation
+* L'exposer sur le web
+* Voire quelque chose 
+* Aller chercher des sous
