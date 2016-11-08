@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/arpinum/gilded-rose-reloaded.svg?branch=master)](https://travis-ci.org/arpinum/gilded-rose-reloaded)
+
 # Gilded Rose Reloaded
 
 Le tavernier nous a demandé une version magique web. Issue des dernières recherches de l'académie de magie INRIA Lille. 
